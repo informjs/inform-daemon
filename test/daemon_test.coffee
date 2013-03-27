@@ -7,7 +7,7 @@ zmq = require 'zmq'
 describe 'Daemon', ->
   describe '#listen', ->
     it 'should listen for messages using ØMQ', sinon.test ->
-      bindSync = sinon.spy()
+      bindSync = @spy()
 
       @mock(zmq).expects('socket').withArgs('pull').once().returns
         bindSync: bindSync
@@ -19,10 +19,10 @@ describe 'Daemon', ->
       expect(bindSync.firstCall.args.length).to.equal 1
 
     it 'should accept a callback argument for handling messages', sinon.test ->
-      bindSync = sinon.spy()
-      _on = sinon.spy()
+      bindSync = @spy()
+      _on = @spy()
 
-      callback = sinon.spy()
+      callback = @spy()
 
       @mock(zmq).expects('socket').withArgs('pull').once().returns
         bindSync: bindSync
