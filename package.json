@@ -24,10 +24,6 @@
 
     "readmeFilename": "README.md",
 
-    "directories": {
-        "lib": "./lib"
-    },
-
     "dependencies": {
         "lodash": "1.1.0"
     },
