@@ -1,4 +1,5 @@
 {Daemon} = require '../src/daemon'
+{Notification} = require 'inform-shared'
 {expect} = require 'chai'
 
 sinon = require 'sinon'
@@ -35,3 +36,12 @@ describe 'Daemon', ->
       expect(_on.firstCall.args.length).to.equal 2
       expect(_on.firstCall.args[0]).to.equal 'message'
       expect(_on.firstCall.args[1]).to.equal callback
+
+  describe '#normalize', ->
+    it 'should normalize a Notification into usable data', ->
+      notificationData = 'This is some example data.'
+
+      notification = new Notification notificationData
+      daemon = new Daemon
+
+      expect(daemon.normalize notification).to.equal notificationData

@@ -8,6 +8,8 @@ class Daemon
     if callback?
       socket.on 'message', callback
 
+  normalize: (notification) -> notification.get()
+
 module.exports = {
   Daemon
 }
