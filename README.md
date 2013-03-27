@@ -1,5 +1,5 @@
 inform-daemon
 =============
 
-[![Build Status](https://travis-ci.org/LimpidTech/inform-daemon.png?branch=master)](https://travis-ci.org/LimpidTech/inform-daemon)
+[![Build Status](https://travis-ci.org/informjs/inform-daemon.png?branch=master)](https://travis-ci.org/informjs/inform-daemon)
 
