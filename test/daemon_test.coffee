@@ -11,9 +11,11 @@ describe 'Daemon', ->
   describe '#listen', ->
     it 'should listen for messages using ØMQ', sinon.test ->
       bindSync = @spy()
+      _on = @spy()
 
       @mock(zmq).expects('socket').withArgs('pull').once().returns
         bindSync: bindSync
+        on: _on
 
       daemon = new Daemon
       daemon.listen()
@@ -21,23 +23,18 @@ describe 'Daemon', ->
       expect(bindSync.calledOnce).to.be.true
       expect(bindSync.firstCall.args.length).to.equal 1
 
-    it 'should accept a callback argument for handling messages', sinon.test ->
-      bindSync = @spy()
+    it 'should listen for "message" events on ØMQ sockets', sinon.test ->
       _on = @spy()
 
-      callback = @spy()
-
       @mock(zmq).expects('socket').withArgs('pull').once().returns
-        bindSync: bindSync
+        bindSync: ->
         on: _on
 
       daemon = new Daemon
-      daemon.listen callback
+      daemon.listen()
 
       expect(_on.calledOnce).to.be.true
-      expect(_on.firstCall.args.length).to.equal 2
-      expect(_on.firstCall.args[0]).to.equal 'message'
-      expect(_on.firstCall.args[1]).to.equal callback
+      expect(_on.calledWith "message", daemon.handle).to.be.true
 
   describe '#handler', ->
     it 'should trigger a "message" event providing #normalized data', sinon.test ->
