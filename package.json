@@ -1,0 +1,33 @@
+{
+  "name": "inform-daemon",
+  "version": "0.0.0",
+  "description": "A service for letting you know about interesting events! ",
+  "main": "./lib/informd",
+
+  "directories": {
+    "test": "test"
+  },
+
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/LimpidTech/inform-daemon"
+  },
+
+  "author": "Brandon R. Stoner",
+  "author_email": "monokrome@limpidtech.com",
+
+  "license": "MIT",
+
+  "readmeFilename": "README.md",
+
+  "devDependencies": {
+      "coffee-script": "1.6.2",
+      "mocha": "1.8.2",
+      "chai": "1.5.0",
+      "sinon": "1.6.0"
+  }
+}
