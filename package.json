@@ -10,7 +10,8 @@
 
     "scripts": {
         "test": "mocha --reporter spec",
-        "prepublish": "make"
+        "prepublish": "make",
+        "preinstall": "make"
     },
 
     "repository": {
