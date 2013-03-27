@@ -5,6 +5,8 @@
 sinon = require 'sinon'
 zmq = require 'zmq'
 
+notificationData = 'This is some example data.'
+
 describe 'Daemon', ->
   describe '#listen', ->
     it 'should listen for messages using ØMQ', sinon.test ->
@@ -37,10 +39,25 @@ describe 'Daemon', ->
       expect(_on.firstCall.args[0]).to.equal 'message'
       expect(_on.firstCall.args[1]).to.equal callback
 
+  describe '#handle', ->
+    it 'should pass #normalized data to the given callback', sinon.test ->
+      @spy Daemon.prototype, 'normalize'
+      callback = @spy()
+
+      # Use a Notification to translate our data into a message
+      notification = new Notification notificationData
+      daemon = new Daemon
+
+      daemon.handle callback, notification.message
+
+      expect(daemon.normalize.calledOnce).to.be.true
+
+      expect(callback.calledOnce).to.be.true
+      expect(callback.calledWith(notificationData)).to.be.true
+      expect(callback.firstCall.args.length).to.equal 1
+
   describe '#normalize', ->
     it 'should normalize a Notification into usable data', ->
-      notificationData = 'This is some example data.'
-
       notification = new Notification notificationData
       daemon = new Daemon
 

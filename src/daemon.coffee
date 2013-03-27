@@ -1,3 +1,4 @@
+{Notification} = require 'inform-shared'
 zmq = require 'zmq'
 
 class Daemon
@@ -7,6 +8,12 @@ class Daemon
 
     if callback?
       socket.on 'message', callback
+
+  handle: (callback, message) ->
+    notification = new Notification
+    notification.message = message
+
+    callback @normalize notification
 
   normalize: (notification) -> notification.get()
 
