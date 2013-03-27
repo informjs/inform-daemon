@@ -27,13 +27,15 @@
     "dependencies": {
         "lodash": "1.1.0",
         "zmq": "2.3.0",
-        "prefer": "0.0.41"
+        "prefer": "0.0.41",
+        "inform-shared": "0.0.0"
     },
 
     "devDependencies": {
         "coffee-script": "1.6.2",
         "mocha": "1.8.2",
         "chai": "1.5.0",
-        "sinon": "1.6.0"
+        "sinon": "1.6.0",
+        "inform-shared": "git://github.com/informjs/inform-shared"
     }
 }
