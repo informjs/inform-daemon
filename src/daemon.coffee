@@ -1,7 +1,10 @@
+{EventEmitter} = require 'events'
 {Notification} = require 'inform-shared'
+
+_ = require 'lodash'
 zmq = require 'zmq'
 
-class Daemon
+class Daemon extends EventEmitter
   listen: (callback) ->
     socket = zmq.socket 'pull'
     socket.bindSync 'tcp://127.0.0.1:5000'
@@ -9,11 +12,11 @@ class Daemon
     if callback?
       socket.on 'message', callback
 
-  handle: (callback, message) ->
+  handle: (message) ->
     notification = new Notification
     notification.message = message
 
-    callback @normalize notification
+    @emit 'message', @normalize notification
 
   normalize: (notification) -> notification.get()
 

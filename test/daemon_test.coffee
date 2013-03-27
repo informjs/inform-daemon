@@ -39,22 +39,24 @@ describe 'Daemon', ->
       expect(_on.firstCall.args[0]).to.equal 'message'
       expect(_on.firstCall.args[1]).to.equal callback
 
-  describe '#handle', ->
-    it 'should pass #normalized data to the given callback', sinon.test ->
+  describe '#handler', ->
+    it 'should trigger a "message" event providing #normalized data', sinon.test ->
       @spy Daemon.prototype, 'normalize'
-      callback = @spy()
+      handler = @spy()
 
       # Use a Notification to translate our data into a message
       notification = new Notification notificationData
       daemon = new Daemon
 
-      daemon.handle callback, notification.message
+      daemon.on 'message', handler
+      daemon.handle notification.message
 
       expect(daemon.normalize.calledOnce).to.be.true
 
-      expect(callback.calledOnce).to.be.true
-      expect(callback.calledWith(notificationData)).to.be.true
-      expect(callback.firstCall.args.length).to.equal 1
+      expect(handler.calledOnce).to.be.true
+      expect(handler.calledWith notificationData).to.be.true
+      expect(handler.firstCall.args.length).to.equal 1
+
 
   describe '#normalize', ->
     it 'should normalize a Notification into usable data', ->
