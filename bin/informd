@@ -1,4 +1,7 @@
 #!/usr/bin/env coffee
 
-require 'informd'
+{Daemon} = require 'inform-daemon'
+
+daemon = new Daemon
+daemon.listen()
 
