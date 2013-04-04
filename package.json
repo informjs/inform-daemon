@@ -15,7 +15,7 @@
 
     "repository": {
         "type": "git",
-        "url": "git://github.com/LimpidTech/inform-daemon"
+        "url": "git://github.com/informjs/inform-daemon"
     },
 
     "author": "Brandon R. Stoner",
