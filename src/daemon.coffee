@@ -9,7 +9,8 @@ class Daemon extends EventEmitter
     socket = zmq.socket 'pull'
     socket.bindSync 'tcp://127.0.0.1:5000'
 
-    socket.on 'message', @handle
+    socket.on 'message', (message) =>
+      @handle message
 
   handle: (message) ->
     notification = new Notification

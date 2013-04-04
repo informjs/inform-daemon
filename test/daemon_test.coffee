@@ -34,7 +34,8 @@ describe 'Daemon', ->
       daemon.listen()
 
       expect(_on.calledOnce).to.be.true
-      expect(_on.calledWith "message", daemon.handle).to.be.true
+      expect(_on.calledWith "message").to.be.true
+      expect(_on.firstCall.args.length).to.equal 2
 
   describe '#handler', ->
     it 'should trigger a "message" event providing #normalized data', sinon.test ->
