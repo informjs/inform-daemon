@@ -36,7 +36,6 @@
         "coffee-script": "1.6.2",
         "mocha": "1.8.2",
         "chai": "1.5.0",
-        "sinon": "1.6.0",
-        "inform-shared": "git://github.com/informjs/inform-shared"
+        "sinon": "1.6.0"
     }
 }
