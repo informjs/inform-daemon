@@ -2,9 +2,9 @@ CC=coffee
 OUT=lib/informd
 IN=src/
 
-all: lib/informd
+all: lib/inform-daemon
 	${CC} -o ${OUT} -c ${IN}
 
-lib/informd:
+lib/inform-daemon:
 	mkdir -p "${OUT}"
 

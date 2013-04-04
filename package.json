@@ -2,7 +2,7 @@
     "name": "inform-daemon",
     "version": "0.0.0",
     "description": "A service for letting you know about interesting events! ",
-    "main": "./lib/informd",
+    "main": "./lib/inform-daemon",
 
     "directories": {
         "test": "test"
