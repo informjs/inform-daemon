@@ -1,5 +1,5 @@
 CC=coffee
-OUT=lib/informd
+OUT=lib/inform-daemon
 IN=src/
 
 all: lib/inform-daemon
