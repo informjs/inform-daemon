@@ -10,5 +10,5 @@ before_install:
   - sudo apt-get install nodejs-dev libzmq3-dev -qq
 
 before_script:
-  - node_modules/inform-shared/ && make
+  - cd node_modules/inform-shared/ && make
 
