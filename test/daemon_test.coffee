@@ -1,5 +1,8 @@
+mockery = require 'mockery'
+
 {Daemon} = require '../src/daemon'
 {Notification} = require 'inform-shared'
+{MockPlugin} = require './mocks'
 {expect} = require 'chai'
 
 sinon = require 'sinon'
@@ -62,3 +65,20 @@ describe 'Daemon', ->
       daemon = new Daemon
 
       expect(daemon.normalize notification).to.equal notificationData
+
+  describe '#use', ->
+    it 'should return a new plugin given a plugin module name', sinon.test ->
+      pluginModule = @mock
+      pluginModule.Plugin = MockPlugin
+
+      mockery.registerMock 'plugin', pluginModule
+      mockery.enable()
+
+      daemon = new Daemon
+      result = daemon.use 'plugin'
+
+      expect(result instanceof pluginModule.Plugin).to.be.true
+
+      mockery.disable()
+      mockery.deregisterMock 'plugin'
+
