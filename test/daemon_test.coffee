@@ -126,7 +126,7 @@ describe 'Daemon', ->
 
       daemon.on = @spy()
 
-      usePlugin = -> daemon.use './plugin'
+      usePlugin = -> daemon.use 'inform-shared/lib/inform-shared/plugin'
 
       expect(usePlugin).to.throw Error
 
