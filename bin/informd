@@ -5,9 +5,6 @@ _ = require 'lodash'
 {Daemon} = require 'inform-daemon'
 prefer = require 'prefer'
 
-messageReceived = (message) ->
-  console.dir message
-
 startDaemon = (err, preferences) ->
   daemon = new Daemon
 
