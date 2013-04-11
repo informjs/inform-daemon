@@ -14,6 +14,9 @@ exampleData =
   }
 
 describe 'Plugin', ->
+  it 'should not define #receive', ->
+    expect(Plugin.prototype.receive).to.equal undefined
+
   describe '#constructor', ->
     it 'should set options to the first provided argument', sinon.test ->
       plugin = new Plugin exampleData.options
