@@ -23,7 +23,11 @@ class Daemon extends EventEmitter
   use: (plugin, options) ->
     {Plugin} = require plugin
 
-    return new Plugin options
+    plugin = new Plugin options
+
+    @on 'message', plugin.receive
+
+    return plugin
 
 module.exports = {
   Daemon

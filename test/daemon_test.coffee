@@ -99,3 +99,23 @@ describe 'Daemon', ->
       mockery.disable()
       mockery.deregisterMock 'plugin'
 
+    it 'should register a message listener for the created plugin', sinon.test ->
+      pluginModule = @mock
+      pluginModule.Plugin = MockPlugin
+
+      mockery.registerMock 'plugin', pluginModule
+      mockery.enable()
+
+      options = {}
+
+      daemon = new Daemon
+      daemon.on = @spy()
+
+      result = daemon.use 'plugin', options
+
+      expect(daemon.on.calledOnce).to.be.true
+      expect(daemon.on.calledWith 'message', result.receive).to.be.true
+
+      mockery.disable()
+      mockery.deregisterMock 'plugin'
+
