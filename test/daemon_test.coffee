@@ -1,6 +1,6 @@
 mockery = require 'mockery'
 
-{Daemon} = require '../src/daemon'
+{Daemon, InvalidPluginError} = require '../src/daemon'
 {Notification} = require 'inform-shared'
 {MockPlugin} = require './mocks'
 {expect} = require 'chai'
@@ -118,4 +118,15 @@ describe 'Daemon', ->
 
       mockery.disable()
       mockery.deregisterMock 'plugin'
+
+    # TODO: This should really test specifically for InvalidPluginError, but 
+    # chai does not use instanceof properly.
+    it 'should raise Error when plugins can not receive messages', sinon.test ->
+      daemon = new Daemon
+
+      daemon.on = @spy()
+
+      usePlugin = -> daemon.use './plugin'
+
+      expect(usePlugin).to.throw Error
 

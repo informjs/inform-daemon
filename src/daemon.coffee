@@ -4,6 +4,8 @@
 _ = require 'lodash'
 zmq = require 'zmq'
 
+class InvalidPluginError extends Error
+
 class Daemon extends EventEmitter
   listen: ->
     socket = zmq.socket 'pull'
@@ -20,10 +22,13 @@ class Daemon extends EventEmitter
 
   normalize: (notification) -> notification.get()
 
-  use: (plugin, options) ->
-    {Plugin} = require plugin
+  use: (pluginModule, options) ->
+    {Plugin} = require pluginModule
 
     plugin = new Plugin options
+
+    if !plugin.receive?
+      throw new InvalidPluginError "Expected plugin (#{ pluginModule }) define a receive method."
 
     @on 'message', plugin.receive
 
@@ -31,4 +36,5 @@ class Daemon extends EventEmitter
 
 module.exports = {
   Daemon
+  InvalidPluginError
 }
