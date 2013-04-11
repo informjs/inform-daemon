@@ -20,10 +20,10 @@ class Daemon extends EventEmitter
 
   normalize: (notification) -> notification.get()
 
-  use: (plugin) ->
+  use: (plugin, options) ->
     {Plugin} = require plugin
 
-    return new Plugin
+    return new Plugin options
 
 module.exports = {
   Daemon

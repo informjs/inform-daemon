@@ -82,3 +82,20 @@ describe 'Daemon', ->
       mockery.disable()
       mockery.deregisterMock 'plugin'
 
+    it 'should pass any provided options to the created plugin', sinon.test ->
+      pluginModule = @mock
+      pluginModule.Plugin = MockPlugin
+
+      mockery.registerMock 'plugin', pluginModule
+      mockery.enable()
+
+      options = {}
+
+      daemon = new Daemon
+      result = daemon.use 'plugin', options
+
+      expect(result.options).to.equal options
+
+      mockery.disable()
+      mockery.deregisterMock 'plugin'
+
