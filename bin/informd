@@ -11,8 +11,6 @@ startDaemon = (err, preferences) ->
   _.each preferences.plugins, (pluginSettings, pluginName) ->
     daemon.use pluginName, pluginSettings
 
-  daemon.on 'message', messageReceived
-
   daemon.listen()
 
 prefer.load 'informd.json', {}, (err, configurator) ->
