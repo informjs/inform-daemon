@@ -29,7 +29,9 @@
         "lodash": "1.1.0",
         "zmq": "2.3.0",
         "prefer": "0.0.41",
-        "inform-shared": "0.0.0"
+        "inform-shared": "0.0.0",
+
+        "winston": "0.6.2"
     },
 
     "devDependencies": {
