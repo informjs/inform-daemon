@@ -1,7 +1,23 @@
 #!/usr/bin/env coffee
 
-{Daemon} = require 'inform-daemon'
+_ = require 'lodash'
 
-daemon = new Daemon
-daemon.listen()
+{Daemon} = require 'inform-daemon'
+prefer = require 'prefer'
+
+messageReceived = (message) ->
+  console.dir message
+
+startDaemon = (err, preferences) ->
+  daemon = new Daemon
+
+  _.each preferences.plugins, (pluginSettings, pluginName) ->
+    daemon.use pluginName, pluginSettings
+
+  daemon.on 'message', messageReceived
+
+  daemon.listen()
+
+prefer.load 'informd.json', {}, (err, configurator) ->
+  configurator.get startDaemon
 
