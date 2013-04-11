@@ -9,7 +9,7 @@
     },
 
     "scripts": {
-        "test": "mocha --reporter spec",
+        "test": "mocha",
         "prepublish": "make"
     },
 
