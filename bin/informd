@@ -9,7 +9,7 @@ startDaemon = (err, preferences) ->
   daemon = new Daemon
 
   _.each preferences.plugins, (pluginSettings, pluginName) ->
-    daemon.use pluginName, pluginSettings
+    daemon.use "inform-plugin-#{ pluginName }", pluginSettings
 
   daemon.listen()
 
