@@ -1,9 +1,11 @@
 #!/usr/bin/env coffee
 
+
 _ = require 'lodash'
 
 {Daemon} = require 'inform-daemon'
 prefer = require 'prefer'
+
 
 startDaemon = (err, preferences) ->
   daemon = new Daemon
@@ -13,6 +15,6 @@ startDaemon = (err, preferences) ->
 
   daemon.listen()
 
-prefer.load 'informd.json', {}, (err, configurator) ->
-  configurator.get startDaemon
 
+prefer.load 'informd.json'
+  .done (configurator) -> configurator.get startDaemon
