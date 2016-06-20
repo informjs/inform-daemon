@@ -1,44 +1,35 @@
 {
-    "name": "inform-daemon",
-    "version": "0.1.0",
-    "description": "A service for letting you know about interesting events! ",
-    "main": "./lib/inform-daemon",
-
-    "directories": {
-        "test": "test"
-    },
-
-    "scripts": {
-        "test": "mocha",
-        "prepublish": "make"
-    },
-
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/informjs/inform-daemon"
-    },
-
-    "author": "Brandon R. Stoner",
-    "author_email": "monokrome@limpidtech.com",
-
-    "license": "MIT",
-
-    "readmeFilename": "README.md",
-
-    "dependencies": {
-        "lodash": "1.1.0",
-        "zmq": "2.3.0",
-        "prefer": "0.0.41",
-        "inform-shared": "0.1.0",
-
-        "winston": "0.6.2"
-    },
-
-    "devDependencies": {
-        "coffee-script": "1.6.2",
-        "mocha": "1.8.2",
-        "chai": "1.5.0",
-        "sinon": "1.6.0",
-        "mockery": "1.4.0"
-    }
+  "name": "inform-daemon",
+  "version": "0.1.0",
+  "description": "A service for letting you know about interesting events! ",
+  "main": "./lib/inform-daemon",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha",
+    "prepublish": "make"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/informjs/inform-daemon"
+  },
+  "author": "Brandon R. Stoner",
+  "author_email": "monokrome@limpidtech.com",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "inform-shared": "0.1.1",
+    "lodash": "4.13.1",
+    "prefer": "0.0.41",
+    "winston": "0.6.2",
+    "zmq": "2.15.3"
+  },
+  "devDependencies": {
+    "chai": "1.5.0",
+    "coffee-script": "1.6.2",
+    "mocha": "1.8.2",
+    "mockery": "1.4.0",
+    "sinon": "1.6.0"
+  }
 }
