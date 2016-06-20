@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "mocha",
-    "prepublish": "make"
+    "prepublish": "make",
+    "start": "bin/informd"
   },
   "repository": {
     "type": "git",
@@ -19,15 +20,15 @@
   "license": "MIT",
   "readmeFilename": "README.md",
   "dependencies": {
+    "coffee-script": "1.10.0",
     "inform-shared": "0.1.1",
     "lodash": "4.13.1",
-    "prefer": "0.0.41",
+    "prefer": "0.5.7",
     "winston": "0.6.2",
     "zmq": "2.15.3"
   },
   "devDependencies": {
     "chai": "3.5.0",
-    "coffee-script": "1.10.0",
     "mocha": "2.5.3",
     "mockery": "1.4.0",
     "sinon": "1.17.4"
