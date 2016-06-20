@@ -16,5 +16,5 @@ startDaemon = (err, preferences) ->
   daemon.listen()
 
 
-prefer.load 'informd.json'
+prefer.load 'informd'
   .done (configurator) -> configurator.get startDaemon
