@@ -99,7 +99,7 @@ describe 'Daemon', ->
       mockery.disable()
       mockery.deregisterMock 'plugin'
 
-    it.only 'should register a message listener for the created plugin', sinon.test ->
+    it 'should register a message listener for the created plugin', sinon.test ->
       pluginModule = @mock
       pluginModule.Plugin = MockPlugin
 
@@ -125,7 +125,6 @@ describe 'Daemon', ->
     # chai does not use instanceof properly.
     it 'should raise Error when plugins can not receive messages', sinon.test ->
       daemon = new Daemon
-
       daemon.on = @spy()
 
       usePlugin = -> daemon.use 'inform-shared/lib/inform-shared/plugin'
