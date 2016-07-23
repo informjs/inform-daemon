@@ -1,9 +1,11 @@
+sinon = require 'sinon'
+
+
 class MockPlugin
   constructor: (@options) ->
+    @receive = sinon.stub()
 
-  receive: (message) ->
 
 module.exports = {
   MockPlugin
 }
-

@@ -40,7 +40,7 @@ describe 'Daemon', ->
       expect(_on.calledWith "message").to.be.true
       expect(_on.firstCall.args.length).to.equal 2
 
-  describe '#handler', ->
+  describe '#handle', ->
     it 'should trigger a "message" event providing #normalized data', sinon.test ->
       @spy Daemon.prototype, 'normalize'
       handler = @spy()
@@ -99,7 +99,7 @@ describe 'Daemon', ->
       mockery.disable()
       mockery.deregisterMock 'plugin'
 
-    it 'should register a message listener for the created plugin', sinon.test ->
+    it.only 'should register a message listener for the created plugin', sinon.test ->
       pluginModule = @mock
       pluginModule.Plugin = MockPlugin
 
@@ -109,12 +109,14 @@ describe 'Daemon', ->
       options = {}
 
       daemon = new Daemon
-      daemon.on = @spy()
+      @spy daemon, 'on'
 
-      result = daemon.use 'plugin', options
-
+      plugin = daemon.use 'plugin', options
       expect(daemon.on.calledOnce).to.be.true
-      expect(daemon.on.calledWith 'message', result.receive).to.be.true
+      expect(daemon.on.calledWith 'message').to.be.true
+
+      daemon.handle '{}'
+      expect(plugin.receive.calledOnce).to.be.true
 
       mockery.disable()
       mockery.deregisterMock 'plugin'

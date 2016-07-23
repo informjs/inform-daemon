@@ -11,8 +11,7 @@ class Daemon extends EventEmitter
     socket = zmq.socket 'pull'
     socket.bindSync 'tcp://127.0.0.1:5000'
 
-    socket.on 'message', (message) =>
-      @handle message
+    socket.on 'message', @handle.bind @
 
   handle: (message) ->
     notification = new Notification
@@ -27,10 +26,10 @@ class Daemon extends EventEmitter
 
     plugin = new Plugin options
 
-    if !plugin.receive?
+    unless plugin.receive?
       throw new InvalidPluginError "Expected plugin (#{ pluginModule }) define a receive method."
 
-    @on 'message', plugin.receive
+    @on 'message', plugin.receive.bind plugin
 
     return plugin
 
