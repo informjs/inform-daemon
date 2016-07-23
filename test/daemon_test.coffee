@@ -1,6 +1,6 @@
 mockery = require 'mockery'
 
-{Daemon, InvalidPluginError} = require '../src/daemon'
+{Daemon, InvalidPluginError} = require '../lib/daemon'
 {Notification} = require 'inform-shared'
 {MockPlugin} = require './mocks'
 {expect} = require 'chai'
