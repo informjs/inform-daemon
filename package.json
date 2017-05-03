@@ -27,7 +27,7 @@
     "lodash": "^4.17.4",
     "prefer": "^0.5.8",
     "winston": "^0.6.2",
-    "zmq": "^2.15.3"
+    "zeromq": "^4.2.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
