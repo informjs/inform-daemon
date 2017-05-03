@@ -2,8 +2,7 @@
 
 
 const _ = require('lodash'),
-      prefer = require('prefer'),
-      Daemon = require('inform-daemon');
+      Daemon = require('inform-daemon').Daemon;
 
 
 function startDaemon(err, preferences) {
@@ -17,7 +16,6 @@ function startDaemon(err, preferences) {
 }
 
 
-function configure(configurator) { configurator.get(startDaemon); }
-
-
-prefer.load('informd').done(configure);
+require('prefer').load('informd').done(function configure(configurator) {
+  configurator.get(startDaemon);
+});
