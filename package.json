@@ -25,6 +25,7 @@
     "coffee-script": "^1.12.5",
     "inform-shared": "^0.1.1",
     "lodash": "^4.17.4",
+    "mockery": "^1.7.0",
     "prefer": "^0.5.8",
     "winston": "^0.6.2",
     "zeromq": "^4.2.1"
