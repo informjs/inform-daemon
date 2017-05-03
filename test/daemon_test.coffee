@@ -6,7 +6,7 @@ mockery = require 'mockery'
 {expect} = require 'chai'
 
 sinon = require 'sinon'
-zmq = require 'zmq'
+zmq = require 'zeromq'
 
 notificationData = 'This is some example data.'
 

@@ -27,12 +27,12 @@
     "lodash": "4.13.1",
     "prefer": "0.5.8",
     "winston": "0.6.2",
-    "zmq": "2.15.3"
+    "zeromq": "^4.2.1"
   },
   "devDependencies": {
     "chai": "3.5.0",
     "mocha": "2.5.3",
-    "mockery": "1.4.0",
+    "mockery": "^1.4.0",
     "sinon": "1.17.4"
   }
 }
