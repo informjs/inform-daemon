@@ -22,17 +22,17 @@
   "license": "MIT",
   "readmeFilename": "README.md",
   "dependencies": {
-    "coffee-script": "1.10.0",
-    "inform-shared": "0.1.1",
-    "lodash": "4.13.1",
-    "prefer": "0.5.8",
-    "winston": "0.6.2",
-    "zmq": "2.15.3"
+    "coffee-script": "^1.12.5",
+    "inform-shared": "^0.1.1",
+    "lodash": "^4.17.4",
+    "prefer": "^0.5.8",
+    "winston": "^0.6.2",
+    "zmq": "^2.15.3"
   },
   "devDependencies": {
-    "chai": "3.5.0",
-    "mocha": "2.5.3",
-    "mockery": "1.4.0",
-    "sinon": "1.17.4"
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3",
+    "mockery": "^1.4.0",
+    "sinon": "^1.17.4"
   }
 }
