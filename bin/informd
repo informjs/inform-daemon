@@ -1,20 +1,23 @@
-#!/usr/bin/env coffee
+#!/usr/bin/env node
 
 
-_ = require 'lodash'
-
-{Daemon} = require 'inform-daemon'
-prefer = require 'prefer'
-
-
-startDaemon = (err, preferences) ->
-  daemon = new Daemon
-
-  _.each preferences.plugins, (pluginSettings, pluginName) ->
-    daemon.use "inform-plugin-#{ pluginName }", pluginSettings
-
-  daemon.listen()
+const _ = require('lodash'),
+      prefer = require('prefer'),
+      Daemon = require('inform-daemon');
 
 
-prefer.load 'informd'
-  .done (configurator) -> configurator.get startDaemon
+function startDaemon(err, preferences) {
+  const daemon = new Daemon;
+
+  _.each(preferences.plugins, (pluginSettings, pluginName) => {
+    daemon.use("inform-plugin-#{ pluginName }", pluginSettings);
+  });
+
+  daemon.listen();
+}
+
+
+function configure(configurator) { configurator.get(startDaemon); }
+
+
+prefer.load('informd').done(configure);
